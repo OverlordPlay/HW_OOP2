@@ -6,8 +6,17 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void wouldNextNumber() {
-        Radio number = new Radio();
+    public void shouldGetNumber() {
+        Radio number = new Radio(10);
+
+        Assertions.assertEquals(0, number.getMinNumber());
+        Assertions.assertEquals(9, number.getMaxNumber());
+        Assertions.assertEquals(0, number.getCurrentNumber());
+    }
+
+    @Test
+    public void shouldNextNumber() {
+        Radio number = new Radio(10);
 
         number.setNextNumber();
 
@@ -18,8 +27,8 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldNextNumberAboveMax() {
-        Radio number = new Radio();
+    public void shouldNextNumberAboveMax() {
+        Radio number = new Radio(10);
         number.setCurrentNumber(9);
         number.setNextNumber();
 
@@ -30,8 +39,8 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldCurrentNumber() {
-        Radio number = new Radio();
+    public void shouldCurrentNumber() {
+        Radio number = new Radio(10);
         number.setCurrentNumber(9);
 
         int expected = 9;
@@ -41,8 +50,8 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldCurrentNumberAboveMax() {
-        Radio number = new Radio();
+    public void shouldCurrentNumberAboveMax() {
+        Radio number = new Radio(10);
         number.setCurrentNumber(10);
 
         int expected = 0;
@@ -52,8 +61,8 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldPrevNumber() {
-        Radio number = new Radio();
+    public void shouldPrevNumber() {
+        Radio number = new Radio(10);
         number.setCurrentNumber(5);
 
         number.setPrevNumber();
@@ -65,8 +74,8 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldPrevNumberBelowMin() {
-        Radio number = new Radio();
+    public void shouldPrevNumberBelowMin() {
+        Radio number = new Radio(10);
         number.setCurrentNumber(0);
 
         number.setPrevNumber();
@@ -78,7 +87,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldNextVolume() {
+    public void shouldNextVolume() {
         Radio volume = new Radio();
         volume.setCurrentVolume(99);
 
@@ -91,7 +100,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldNextVolumeAboveMax() {
+    public void shouldNextVolumeAboveMax() {
         Radio volume = new Radio();
         volume.setCurrentVolume(100);
 
@@ -104,7 +113,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldPrevVolume() {
+    public void shouldPrevVolume() {
         Radio volume = new Radio();
         volume.setCurrentVolume(100);
 
@@ -117,7 +126,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldPrevVolumeBelowMin() {
+    public void shouldPrevVolumeBelowMin() {
         Radio volume = new Radio();
         volume.setCurrentVolume(0);
 
@@ -130,7 +139,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldCurrentVolumeMax() {
+    public void shouldCurrentVolumeMax() {
         Radio volume = new Radio();
         volume.setCurrentVolume(100);
 
@@ -141,7 +150,7 @@ public class RadioTest {
     }
 
     @Test
-    public void wouldCurrentVolumeAboveMax() {
+    public void shouldCurrentVolumeAboveMax() {
         Radio volume = new Radio();
         volume.setCurrentVolume(101);
 
